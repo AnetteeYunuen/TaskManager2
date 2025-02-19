@@ -1,0 +1,47 @@
+/* MainLayout.css */
+
+.layout {
+    min-height: 100vh;
+    background: #ffdcdc;
+  }
+  
+  .sider {
+    background: #ffdcdc;
+    border-right: 1px solid #ebd6d6;
+  }
+  
+  .sider-header {
+    height: 64px;
+    padding: 16px;
+    color: #ff6ab0;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #ffdcdc;
+  }
+  
+  .custom-menu {
+    background: #ffdcdc;
+    color: #fff;
+  }
+  
+  .custom-menu .ant-menu-dark .ant-menu-item-selected {
+    background-color: #ff277a !important;
+  }
+  
+  .custom-menu .ant-menu-dark .ant-menu-item:hover {
+    color: #ff88cb !important;
+  }
+  
+  .layout-content {
+    margin: 24px 16px;
+    padding: 24px;
+    background: #ffdcdc;
+    border-radius: 8px;
+  }
+  
+  .layout-header {
+    background: #ffdcdc;
+    padding: 0;
+    border-bottom: 1px solid #ffdcdc;
+  }
+  

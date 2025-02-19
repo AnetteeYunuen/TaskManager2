@@ -1,0 +1,54 @@
+/* RegisterPage.css */
+
+.custom-input {
+  color: white !important;
+}
+
+.custom-input input {
+  color: white !important;
+}
+
+.custom-input input::placeholder {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.ant-input-password-icon {
+  color: #ff88cb !important;
+}
+
+.register-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffdcdc);
+}
+
+.card {
+  width: 400px;
+  background: #ffdcdc;
+  border: 1px solid #ffdcdc;
+  border-radius: 8px;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #ff88cb;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-button {
+  background: #ff88cb;
+  border-color: #ff88cb;
+}
+
+.link {
+  text-align: center;
+  color: #ff88cb;
+  cursor: pointer;
+}
