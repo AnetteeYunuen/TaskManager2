@@ -3,19 +3,18 @@ import { Modal, Form, Input, DatePicker, Select, message } from 'antd';
 import api from '../services/api';
 
 const { TextArea } = Input;
-
 const NewTaskModal = ({ visible, onClose, onTaskCreated }) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
     try {
         await api.post('/tasks/create', values);
-        message.success('Tarea creada exitosamente');
+        message.success('Tarea agregada');
       form.resetFields();
       onTaskCreated();
       onClose();
     } catch (error) {
-      message.error('Error al crear la tarea');
+      message.error('Error al agregar tarea');
     }
   };
 

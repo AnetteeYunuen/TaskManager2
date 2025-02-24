@@ -6,6 +6,8 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import MainLayout from './layouts/MainLayout';
 import PrivateRoute from './components/PrivateRoute';
+import CreateGroupPage from './pages/Groups/CreateGroupPage';
+import JoinGroupPage from './pages/Groups/JoinGroupPage';
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/create-group" element={<MainLayout><CreateGroupPage /></MainLayout>} />
+        <Route path="/join-group" element={<MainLayout><JoinGroupPage /></MainLayout>} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={
           <PrivateRoute>

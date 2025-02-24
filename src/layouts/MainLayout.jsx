@@ -1,40 +1,52 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
-import { HomeOutlined, ProjectOutlined, TeamOutlined, UnorderedListOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons'; // Agrega los nuevos íconos
+import { HomeOutlined, ProjectOutlined, TeamOutlined, UnorderedListOutlined, UserOutlined, LogoutOutlined, PlusOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import './MainLayout.css'; 
+import './MainLayout.css';
 
 const { Header, Sider, Content } = Layout;
 
 const MainLayout = ({ children }) => {
   const navigate = useNavigate();
-  
+
   const menuItems = [
     {
       key: 'tasks',
-      icon: <UnorderedListOutlined />,  // Ícono de lista
+      icon: <UnorderedListOutlined />,
       label: 'Tasks',
       onClick: () => navigate('/dashboard')
     },
     {
       key: 'micuenta',
-      icon: <UserOutlined />,  // Ícono de usuario
+      icon: <UserOutlined />,
       label: 'Mi cuenta',
       onClick: () => navigate('/dashboard/projects')
     },
     {
+      key: 'creargrupo',
+      icon: <PlusOutlined />,
+      label: 'Crear grupo',
+      onClick: () => navigate('/create-group')
+    },
+    {
+      key: 'unirmegrupo',
+      icon: <PlusOutlined />,
+      label: 'Unirme a un grupo',
+      onClick: () => navigate('/join-group') 
+    },
+    {
       key: 'cerrar',
-      icon: <LogoutOutlined />,  // Ícono de salida
+      icon: <LogoutOutlined />,
       label: 'Cerrar sesión',
-      onClick: () => navigate('/dashboard/team')
+      onClick: () => navigate('/login')
     }
   ];
 
   return (
     <Layout className="layout">
-      <Sider 
-        className="sider" 
-        theme="dark" 
+      <Sider
+        className="sider"
+        theme="dark"
         width={250}
       >
         <div className="sider-header">

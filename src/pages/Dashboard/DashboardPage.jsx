@@ -16,14 +16,16 @@ const getStatusColor = (status) => {
   return colors[status] || 'default';
 };
 
+const statuses = ['In Progress', 'Done', 'Paused', 'Revision'];
+
 const DashboardPage = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  const [tasksByStatus, setTasksByStatus] = useState({});
 
   const fetchTasks = async () => {
     try {
-      const response = await api.get('/tasks/list');
-      setTasks(response.data);
+      const response = await api.get('/tasks/grouped-by-status');
+      setTasksByStatus(response.data);
     } catch (error) {
       console.error('Error fetching tasks:', error);
     }
@@ -34,22 +36,38 @@ const DashboardPage = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ padding: '20px' }}>
       <Title level={2} style={{ color: '#ff6ab0' }}>Mis Tareas</Title>
       <Row gutter={[16, 16]}>
-        {tasks.map(task => (
-          <Col span={8} key={task.id}>
+        {statuses.map(status => (
+          <Col span={6} key={status}>
             <Card 
+              title={status}
               style={{ 
-                background: '#ffdcdc',
-                border: '1px solid #ffdcdc',
-                borderRadius: '8px'
+                background: '#f0f2f5',
+                borderRadius: '8px',
+                height: '100%'
               }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ color: '#fff', fontSize: '16px' }}>{task.nameTask}</span>
-                <Badge status={getStatusColor(task.status)} text={<span style={{ color: '#fff' }}>{task.status}</span>} />
-              </div>
+              {tasksByStatus[status]?.map(task => (
+                <Card 
+                  key={task.id}
+                  style={{ 
+                    marginBottom: '16px', 
+                    background: '#fff',
+                    borderRadius: '8px',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                  }}
+                >
+                  <h4>{task.nameTask}</h4>
+                  <p>{task.description}</p>
+                  <p>Fecha límite: {new Date(task.deadline).toLocaleDateString()}</p>
+                  <Badge 
+                    status={getStatusColor(task.status)} 
+                    text={task.status} 
+                  />
+                </Card>
+              ))}
             </Card>
           </Col>
         ))}
@@ -57,8 +75,8 @@ const DashboardPage = () => {
       <Button
         type="primary"
         shape="circle"
-        icon={<PlusOutlined style={{ color: '#ff88cb' }} />}  
-  size="large"
+        icon={<PlusOutlined style={{ color: '#ff88cb' }} />}
+        size="large"
         style={{
           position: 'fixed',
           bottom: '30px',

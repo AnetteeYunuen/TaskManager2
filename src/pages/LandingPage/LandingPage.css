@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #ffdcdc);
+    background: linear-gradient(135deg, #fdcae1);
   }
   
   .landing-card {
@@ -18,17 +18,17 @@
   }
   
   .landing-title {
-    color: #fff;
+    color: #100b42;
     margin-bottom: 0;
   }
   
   .landing-text {
-    color: #ff88cb;
+    color: #000000;
     font-size: 18px;
   }
   
   .landing-button {
-    background: #ff88cb;
-    border-color: #ff88cb;
+    background: #fdcae1;
+    border-color: #fdcae1;
   }
   
